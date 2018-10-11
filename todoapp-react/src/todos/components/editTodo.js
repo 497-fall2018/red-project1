@@ -105,7 +105,7 @@ class EditTodo extends Component {
 
                 <Table.Cell>
                     <Input
-                        placeholder='Duration'
+                        placeholder='Duration (HH:MM:SS)'
                         value={this.state.duration}
                         onChange={this.changeNewDuration}/>
                 </Table.Cell>

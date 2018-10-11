@@ -5,13 +5,22 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux'
 import { PropTypes } from 'prop-types'
 import TodoTable from '../components/todoTable';
+import { Header, Menu, Label } from 'semantic-ui-react'
 
-
+var titleStyle = {
+  marginTop: "20px",
+  marginLeft: "20px"
+};
 
 export class TodoContainer extends Component {
     constructor(props) {
         super(props)
+        this.state = {
+          activePage: 'today'
+        }
     }
+
+    handleItemClick = (e, { name }) => this.setState({ activePage: name })
 
     // Todo Container methods dispatch the actions to the reducer functions. Ordered by CRUD Order
 
@@ -52,21 +61,65 @@ export class TodoContainer extends Component {
     }
 
     render() {
-        return (
-            <div className="todo-container">
-                <TodoTable
-                    todos={this.props.todos}
-                    createTodo={this.createTodo}
-                    startEditing={this.startEditing}
-                    cancelEditing={this.cancelEditing}
-                    editTodo={this.editTodo}
-                    startTodo={this.startTodo}
-                    stopTodo={this.stopTodo}
-                    completeTodo = {this.completeTodo}
-                    deleteTodo = {this.deleteTodo}
-                />
+        const { activePage } = this.state
+
+        if (this.state.activePage == "today") {
+          return (
+            <div>
+              <div>
+                <div style={titleStyle}>
+                  <Header as='h2' textAlign='left'>
+                    <Header.Content>JustDoIt</Header.Content>
+                  </Header>
+                </div>
+                <Menu secondary>
+                  <Menu.Item name='today' active={activePage === 'today'} onClick={this.handleItemClick} />
+                  <Menu.Item
+                    name='projects'
+                    active={activePage === 'projects'}
+                    onClick={this.handleItemClick}
+                  />
+                </Menu>
+              </div>
+
+              <div className="todo-container">
+                  <TodoTable
+                      todos={this.props.todos}
+                      createTodo={this.createTodo}
+                      startEditing={this.startEditing}
+                      cancelEditing={this.cancelEditing}
+                      editTodo={this.editTodo}
+                      startTodo={this.startTodo}
+                      stopTodo={this.stopTodo}
+                      completeTodo = {this.completeTodo}
+                      deleteTodo = {this.deleteTodo}
+                  />
+              </div>
             </div>
-        );
+          );
+        } else if (this.state.activePage == "projects") {
+          // Implement this
+          return (
+            <div>
+              <div>
+                <div style={titleStyle}>
+                  <Header as='h2' textAlign='left'>
+                    <Header.Content>JustDoIt</Header.Content>
+                  </Header>
+                </div>
+                <Menu secondary>
+                  <Menu.Item name='today' active={activePage === 'today'} onClick={this.handleItemClick} />
+                  <Menu.Item
+                    name='projects'
+                    active={activePage === 'projects'}
+                    onClick={this.handleItemClick}
+                  />
+                </Menu>
+              </div>
+              <Label size="huge">"Please Implement me"</Label>
+            </div>
+          );
+        }
     }
 }
 
