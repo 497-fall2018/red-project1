@@ -17,7 +17,7 @@ const TodoRow = (props) => {
             <Table.Cell>{props.todo.description}</Table.Cell>
             <Table.Cell>{props.todo.date}</Table.Cell>
             <Table.Cell className="options">
-                <Button className="option-buttons" color='blue' onClick={props.startEditing}>START</Button>
+                <Button className="option-buttons" color='blue' onClick={props.startTodo}>START</Button>
                 {props.todo.status != 'done' && <Button className="option-buttons" color='green' onClick={props.completeTodo}>
                     <i className="fa fa-check"></i>
                 </Button>}
@@ -27,18 +27,6 @@ const TodoRow = (props) => {
                 <Button className="option-buttons" color='red' onClick={props.deleteTodo}>
                     <i className="fa fa-trash"></i>
                 </Button>
-            </Table.Cell>
-            <Table.Cell>
-              <Popup trigger={<button>START</button>} position="top left">
-                {close => (
-                  <div>
-                    Content here
-                    <a className="close" onClick={close}>
-                      &times;
-                    </a>
-                  </div>
-                )}
-              </Popup>
             </Table.Cell>
         </Table.Row>
     );

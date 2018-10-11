@@ -55,6 +55,14 @@ export function TodoListReducer(state = [], action) {
 
         }
 
+        case TodoActions.START_TODO: {
+            return state.map(s => todo(s, action))
+        }
+
+        case TodoActions.STOP_TODO: {
+            return state.map(s => todo(s, action))
+        }
+
         //Delete
         case TodoActions.DELETE_TODO: {
 
@@ -120,6 +128,24 @@ const todo = (state, action) => {
                     ...state,
                     ...action.todo,
                     updating: false
+                }
+            }
+
+        case TodoActions.START_TODO:
+            {
+                return {
+                    ...state,
+                    ...action.todo,
+                    active: true
+                }
+            }
+
+        case TodoActions.STOP_TODO:
+            {
+                return {
+                    ...state,
+                    ...action.todo,
+                    active: false
                 }
             }
 

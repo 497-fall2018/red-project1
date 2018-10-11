@@ -38,6 +38,14 @@ export class TodoContainer extends Component {
         this.props.actions.UpdateTodo({...todo, status: 'done'})
     }
 
+    //Start and Stop
+    startTodo = (id) => {
+      this.props.actions.StartTodo(id)
+    }
+    stopTodo = (id) => {
+      this.props.actions.StopTodo(id)
+    }
+
     //Delete
     deleteTodo = (todo) => {
         this.props.actions.DeleteTodo(todo)
@@ -52,6 +60,8 @@ export class TodoContainer extends Component {
                     startEditing={this.startEditing}
                     cancelEditing={this.cancelEditing}
                     editTodo={this.editTodo}
+                    startTodo={this.startTodo}
+                    stopTodo={this.stopTodo}
                     completeTodo = {this.completeTodo}
                     deleteTodo = {this.deleteTodo}
                 />

@@ -36,7 +36,9 @@ export const DELETE_TODO = '[Todo] DELETE_TODO'
 export const DELETE_TODO_SUCCESS = '[Todo] DELETE_TODO_SUCCESS'
 export const DELETE_TODO_ERROR = '[Todo] DELETE_TODO_ERROR'
 
-
+//Start
+export const START_TODO = '[Todo] START_TODO'
+export const STOP_TODO = '[Todo] STOP_TODO'
 
 
 //These are the action types Also ordered in CRUD Order.
@@ -90,6 +92,20 @@ export function CancelEditing(_id) {
         type: CANCEL_EDITING,
         _id
     }
+}
+
+export function StartTodo(_id) {
+  return {
+    type: START_TODO,
+    _id
+  }
+}
+
+export function StopTodo(_id) {
+  return {
+    type: STOP_TODO,
+    _id
+  }
 }
 
 export function UpdateTodo(todo) {

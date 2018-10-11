@@ -4,6 +4,7 @@ import React, {Component} from 'react';
 import {Button, Icon, Label, Menu, Table} from 'semantic-ui-react'
 import TodoRow from './todoRow'
 import EditTodo from './editTodo'
+import StartTodo from './startTodo'
 
 
 // TodoTable is a Stateless component
@@ -37,6 +38,12 @@ const TodoTable = (props) => {
                                 cancelEditing={e => props.cancelEditing(t._id)}
                                 key={t._id}
                                 todo={t}/>
+                        } else if (t.active) {
+                            return <StartTodo
+                                startTodo={e => props.startTodo(t._id)}
+                                stopTodo={e => props.stopTodo(t._id)}
+                                key={t._id}
+                                todo={t}/>
                         } else {
 
                             // Is the todo is not being edited the TodoRow stateless component is returned
@@ -44,6 +51,8 @@ const TodoTable = (props) => {
                             return <TodoRow
                                 todo={t}
                                 key={t._id}
+                                startTodo={e => props.startTodo(t._id)}
+                                stopTodo={e => props.stopTodo(t._id)}
                                 completeTodo={e => props.completeTodo(t)}
                                 startEditing={e => props.startEditing(t._id)}
                                 deleteTodo={e=> props.deleteTodo(t)}
