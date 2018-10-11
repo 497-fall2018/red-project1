@@ -10,10 +10,9 @@ class StartTodo extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            currentTime: this.props.todo.duration
+            currentTime: this.props.todo.duration,
+            interval: setInterval(this.diminishTime, 1000)
         }
-
-        setInterval(this.diminishTime, 1000);
     }
 
     diminishTime = () => {
@@ -37,6 +36,7 @@ class StartTodo extends Component {
     }
 
     stopTodo = () => {
+      clearInterval(this.state.interval);
       this.props.stopTodo();
     }
 
