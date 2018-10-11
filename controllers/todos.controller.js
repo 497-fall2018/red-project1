@@ -6,7 +6,7 @@ _this = this
 exports.getTodos = async function(req, res, next){
 
     var page = req.query.page ? req.query.page : 1
-    var limit = req.query.limit ? req.query.limit : 10; 
+    var limit = req.query.limit ? req.query.limit : 10;
 
     console.log(page, limit)
 
@@ -22,6 +22,7 @@ exports.createTodo = async function(req, res, next){
     var todo = {
         title: req.body.title,
         description: req.body.description,
+        duration: req.body.duration,
         status: req.body.status
     }
 

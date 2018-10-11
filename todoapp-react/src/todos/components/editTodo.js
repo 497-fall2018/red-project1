@@ -32,7 +32,7 @@ class EditTodo extends Component {
     //Initializes a Empty Todo Object
 
     emptyTodo = () => {
-        return {title: "", description: "", date: moment()}
+        return {title: "", description: "", date: moment(), duration: ""}
     }
 
 
@@ -44,6 +44,10 @@ class EditTodo extends Component {
 
     changeNewDescription = (event) => {
         this.setState({description: event.target.value})
+    }
+
+    changeNewDuration = (event) => {
+      this.setState({duration: event.target.value})
     }
 
     changeNewDate = (event) => {
@@ -64,7 +68,7 @@ class EditTodo extends Component {
     // Modifying the inputs indirectly methods
 
     resetTodo = () => {
-        this.setState({title: "", description: "", date: moment()})
+        this.setState({title: "", description: "", date: moment(), duration: ""})
     }
     cancelEditing = () => {
         this.props.cancelEditing();
@@ -97,6 +101,13 @@ class EditTodo extends Component {
                         placeholder='Description'
                         value={this.state.description}
                         onChange={this.changeNewDescription}/>
+                </Table.Cell>
+
+                <Table.Cell>
+                    <Input
+                        placeholder='Duration'
+                        value={this.state.duration}
+                        onChange={this.changeNewDuration}/>
                 </Table.Cell>
 
                 <Table.Cell>
