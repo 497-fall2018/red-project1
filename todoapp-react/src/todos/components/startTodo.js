@@ -3,6 +3,7 @@ import React, {Text, Component} from 'react';
 
 import {Button, Icon, Label, Menu, Table} from 'semantic-ui-react'
 import {Input} from 'semantic-ui-react'
+import moment from 'moment';
 
 class StartTodo extends Component {
 
@@ -11,11 +12,23 @@ class StartTodo extends Component {
         this.state = {
             currentTime: this.props.todo.duration
         }
-        //setInterval(this.diminishTime, 1000);
+
+        setInterval(this.diminishTime, 1000);
     }
 
     diminishTime = () => {
-      //hrs_string = this.state.currentTime[0:2]
+      var time = this.state.currentTime.split(":");
+      var totalseconds = (parseInt(time[0]) * 3600) + (parseInt(time[1]) * 60) + parseInt(time[2]);
+      totalseconds--;
+
+      var hours = (Math.floor(totalseconds / 3600)).toString();
+      var minutes = (Math.floor((totalseconds - (3600 * hours)) / 60)).toString();
+      var seconds = (Math.floor(totalseconds - (3600 * hours) - (60 * minutes))).toString();
+
+      if (hours.length == 1) { hours = "0" + hours; }
+      if (minutes.length == 1) { minutes = "0" + minutes; }
+      if (seconds.length == 1) { seconds = "0" + seconds; }
+      this.setState({currentTime : hours+":"+minutes+":"+seconds});
     }
 
     // Start and Stop
