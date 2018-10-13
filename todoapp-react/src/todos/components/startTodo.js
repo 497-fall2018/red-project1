@@ -67,14 +67,13 @@ class StartTodo extends Component {
         return (
             <Table.Row>
                 <Table.Cell>{this.props.todo.title}</Table.Cell>
-                <Table.Cell>{this.props.todo.description}</Table.Cell>
                 <Table.Cell>{this.props.todo.duration}</Table.Cell>
-                <Table.Cell>{this.props.todo.date}</Table.Cell>
+                <Table.Cell>{moment(this.props.todo.date).format("ddd, MMM DD")}</Table.Cell>
                 <Table.Cell>
                   <Label size="huge">{this.state.currentTime}</Label>
                   <Button className="option-buttons" color='red' onClick={this.pause}>PAUSE</Button>
-                  <Button className="option-buttons" color='red' onClick={this.stopTodo}>DONE</Button>
                   <Button className="option-buttons" color='red' onClick={this.continue}>CONTINUE</Button>
+                  <Button className="option-buttons" color='red' onClick={this.stopTodo}>DONE</Button>
                 </Table.Cell>
             </Table.Row>
         )

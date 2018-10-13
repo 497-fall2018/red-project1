@@ -11,6 +11,8 @@ import {Button, Table} from 'semantic-ui-react'
 const TodoRow = (props) => {
 
     // format: Sat, Oct 13
+    // currently, props.todo.date is a string
+    // convert it to a moment for formatting
     var displayDate = moment(props.todo.date).format("ddd, MMM DD")
 
     return (
