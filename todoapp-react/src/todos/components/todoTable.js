@@ -65,7 +65,7 @@ const TodoTable = (props) => {
                 {/* This EditTodo component is used as a Create new Todo Component */}
                 {/* Thus by using the same component for both use, we can reuse a lot of the codes */}
 
-                <EditTodo createTodo={props.createTodo} />
+                // <EditTodo createTodo={props.createTodo} />
             </Table.Body>
 
         </Table>
