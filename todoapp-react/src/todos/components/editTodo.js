@@ -32,7 +32,7 @@ class EditTodo extends Component {
     //Initializes a Empty Todo Object
 
     emptyTodo = () => {
-        return {title: "", description: "", date: moment(), duration: ""}
+        return {title: "", date: moment(), duration: ""}
     }
 
 
@@ -42,9 +42,6 @@ class EditTodo extends Component {
         this.setState({title: event.target.value})
     }
 
-    changeNewDescription = (event) => {
-        this.setState({description: event.target.value})
-    }
 
     changeNewDuration = (event) => {
       this.setState({duration: event.target.value})
@@ -94,13 +91,6 @@ class EditTodo extends Component {
                         placeholder='Title'
                         value={this.state.title}
                         onChange={this.changeNewTitle}/>
-                </Table.Cell>
-
-                <Table.Cell>
-                    <Input
-                        placeholder='Description'
-                        value={this.state.description}
-                        onChange={this.changeNewDescription}/>
                 </Table.Cell>
 
                 <Table.Cell>

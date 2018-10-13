@@ -44,7 +44,6 @@ class StartTodo extends Component {
         return (
             <Table.Row>
                 <Table.Cell>{this.props.todo.title}</Table.Cell>
-                <Table.Cell>{this.props.todo.description}</Table.Cell>
                 <Table.Cell>{this.props.todo.duration}</Table.Cell>
                 <Table.Cell>{this.props.todo.date}</Table.Cell>
                 <Table.Cell>

@@ -21,7 +21,6 @@ exports.getTodos = async function(req, res, next){
 exports.createTodo = async function(req, res, next){
     var todo = {
         title: req.body.title,
-        description: req.body.description,
         duration: req.body.duration,
         status: req.body.status
     }
@@ -47,7 +46,7 @@ exports.updateTodo = async function(req, res, next){
     var todo = {
         id,
         title: req.body.title ? req.body.title : null,
-        description: req.body.description ? req.body.description : null,
+        duration: req.body.duration ? req.body.duration : null,
         status: req.body.status ? req.body.status : null
     }
 

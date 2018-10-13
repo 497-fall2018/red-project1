@@ -14,7 +14,6 @@ const TodoRow = (props) => {
 
         <Table.Row className={getClassName(props)}>
             <Table.Cell>{props.todo.title}</Table.Cell>
-            <Table.Cell>{props.todo.description}</Table.Cell>
             <Table.Cell>{props.todo.duration}</Table.Cell>
             <Table.Cell>{props.todo.date}</Table.Cell>
             <Table.Cell className="options">
