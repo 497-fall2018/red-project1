@@ -1,6 +1,7 @@
 
 import React, {Component} from 'react';
 import Popup from "reactjs-popup";
+import moment from 'moment'
 
 import {Button, Table} from 'semantic-ui-react'
 
@@ -8,6 +9,10 @@ import {Button, Table} from 'semantic-ui-react'
 // and maps the specific events to the methods of parent component
 
 const TodoRow = (props) => {
+
+    // format: Sat, Oct 13
+    var displayDate = moment(props.todo.date).format("ddd, MMM DD")
+
     return (
 
         // getClass Name assigns the class names of this element
@@ -15,7 +20,8 @@ const TodoRow = (props) => {
         <Table.Row className={getClassName(props)}>
             <Table.Cell>{props.todo.title}</Table.Cell>
             <Table.Cell>{props.todo.duration}</Table.Cell>
-            <Table.Cell>{props.todo.date}</Table.Cell>
+            <Table.Cell>{displayDate}</Table.Cell>
+            {/*<Table.Cell>{props.todo.date}</Table.Cell>*/}
             <Table.Cell className="options">
                 <Button className="option-buttons" color='blue' onClick={props.startTodo}>START</Button>
                 {props.todo.status != 'done' && <Button className="option-buttons" color='green' onClick={props.completeTodo}>
@@ -31,6 +37,7 @@ const TodoRow = (props) => {
         </Table.Row>
     );
 }
+
 
 // Right now Updating, done and deleting these three states are represented with different Class Name
 
