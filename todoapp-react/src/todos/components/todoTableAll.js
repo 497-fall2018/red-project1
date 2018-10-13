@@ -9,7 +9,7 @@ import StartTodo from './startTodo'
 
 // TodoTable is a Stateless component
 
-const TodoTable = (props) => {
+const TodoTableAll = (props) => {
     return (
         <Table celled>
             <Table.Header>
@@ -28,8 +28,6 @@ const TodoTable = (props) => {
                 {props
                     .todos
                     .map(t => {
-
-                      console.log(t.date);
                         // If the todo is being edited, EditTodo Component is rendered here
 
                         if (t.editing) {
@@ -70,4 +68,4 @@ const TodoTable = (props) => {
     )
 }
 
-export default TodoTable;
+export default TodoTableAll;

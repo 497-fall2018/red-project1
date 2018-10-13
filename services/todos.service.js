@@ -17,7 +17,6 @@ exports.getTodos = async function(query, page, limit){
 }
 
 exports.createTodo = async function(todo){
-
     var newTodo = new ToDo({
         title: todo.title,
         duration: todo.duration,
@@ -45,8 +44,6 @@ exports.updateTodo = async function(todo){
     if(!oldTodo){
         return false;
     }
-
-    console.log(oldTodo)
 
     oldTodo.title = todo.title
     oldTodo.date = todo.date
