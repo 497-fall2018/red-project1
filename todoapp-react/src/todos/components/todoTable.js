@@ -5,11 +5,13 @@ import {Button, Icon, Label, Menu, Table} from 'semantic-ui-react'
 import TodoRow from './todoRow'
 import EditTodo from './editTodo'
 import StartTodo from './startTodo'
+import moment from 'moment';
 
 
 // TodoTable is a Stateless component
 
 const TodoTable = (props) => {
+    var today_date = new moment().format("ddd, MMM DD");
     return (
         <Table celled>
             <Table.Header>
@@ -28,8 +30,7 @@ const TodoTable = (props) => {
                 {props
                     .todos
                     .map(t => {
-
-                      console.log(t.date);
+                      if (moment(t.date).format("ddd, MMM DD") == today_date) {
                         // If the todo is being edited, EditTodo Component is rendered here
 
                         if (t.editing) {
@@ -58,6 +59,7 @@ const TodoTable = (props) => {
                                 deleteTodo={e=> props.deleteTodo(t)}
                             />
                         }
+                      }
                     })}
 
                 {/* This EditTodo component is used as a Create new Todo Component */}
