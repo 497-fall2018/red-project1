@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux'
 import { PropTypes } from 'prop-types'
 import TodoTable from '../components/todoTable';
+import TodoTableAll from '../components/todoTableAll';
 import { Header, Menu, Label } from 'semantic-ui-react'
 
 var titleStyle = {
@@ -41,6 +42,7 @@ export class TodoContainer extends Component {
         this.props.actions.CancelEditing(id)
     }
     editTodo = (todo) => {
+        console.log(todo);
         this.props.actions.UpdateTodo(todo)
     }
     completeTodo = (todo) => {
@@ -116,7 +118,20 @@ export class TodoContainer extends Component {
                   />
                 </Menu>
               </div>
-              <Label size="huge">"Please Implement me"</Label>
+
+              <div className="todo-container">
+                  <TodoTableAll
+                      todos={this.props.todos}
+                      createTodo={this.createTodo}
+                      startEditing={this.startEditing}
+                      cancelEditing={this.cancelEditing}
+                      editTodo={this.editTodo}
+                      startTodo={this.startTodo}
+                      stopTodo={this.stopTodo}
+                      completeTodo = {this.completeTodo}
+                      deleteTodo = {this.deleteTodo}
+                  />
+              </div>
             </div>
           );
         }
