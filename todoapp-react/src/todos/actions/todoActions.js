@@ -49,6 +49,7 @@ export const STOP_TODO = '[Todo] STOP_TODO'
 
 export function CreateTodo(todo){
     return (dispatch, getState) => {
+        todo.date = new Date(todo.date) // changes todo.date from a moment to a Date object
         return TodoApi.createTodo(todo).then(res => {
             dispatch(CreateTodoSuccess(res.data.data))
         })
