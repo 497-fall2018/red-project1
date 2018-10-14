@@ -54,8 +54,10 @@ class EditTodo extends Component {
     // Form submission methods
 
     createTodo = (event) => {
-        this.resetTodo()
-        this.props.createTodo(this.state)
+        if (this.state.duration != "") {
+          this.resetTodo()
+          this.props.createTodo(this.state)
+        }
     }
     editTodo = (event) => {
         this.props.editTodo(this.state)
