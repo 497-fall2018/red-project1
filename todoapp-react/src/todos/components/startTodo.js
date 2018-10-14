@@ -1,7 +1,7 @@
 
 import React, {Text, Component} from 'react';
 
-import {Button, Icon, Label, Menu, Table} from 'semantic-ui-react'
+import {Button, Icon, Label, Menu, Table, Modal} from 'semantic-ui-react'
 import {Input} from 'semantic-ui-react'
 import moment from 'moment';
 

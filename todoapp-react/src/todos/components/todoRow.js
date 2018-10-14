@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 import Popup from "reactjs-popup";
 import moment from 'moment'
 
-import {Button, Table} from 'semantic-ui-react'
+import {Button, Table, Modal} from 'semantic-ui-react'
 
 // The Todo Row component is a simple stateless component, It simply takes the props
 // and maps the specific events to the methods of parent component

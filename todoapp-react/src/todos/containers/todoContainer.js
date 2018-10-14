@@ -9,8 +9,8 @@ import TodoTableAll from '../components/todoTableAll';
 import { Header, Menu, Label } from 'semantic-ui-react'
 
 var titleStyle = {
-  marginTop: "20px",
-  marginLeft: "20px"
+  marginTop: "50px",
+  marginBottom: "20px",
 };
 
 export class TodoContainer extends Component {
@@ -67,13 +67,13 @@ export class TodoContainer extends Component {
         if (this.state.activePage == "today") {
           return (
             <div>
-              <div>
-                <div style={titleStyle}>
+              <div style={titleStyle}>
+                <div style={{display: 'flex', justifyContent: 'center'}}>
                   <Header as='h2' textAlign='left'>
                     <Header.Content>JustDoIt</Header.Content>
                   </Header>
                 </div>
-                <Menu secondary>
+                <Menu secondary style={{display: 'flex', justifyContent: 'center'}}>
                   <Menu.Item name='today' active={activePage === 'today'} onClick={this.handleItemClick} />
                   <Menu.Item
                     name='projects'
@@ -102,13 +102,13 @@ export class TodoContainer extends Component {
           // Implement this
           return (
             <div>
-              <div>
-                <div style={titleStyle}>
+              <div style={titleStyle}>
+                <div style={{display: 'flex', justifyContent: 'center'}}>
                   <Header as='h2' textAlign='left'>
                     <Header.Content>JustDoIt</Header.Content>
                   </Header>
                 </div>
-                <Menu secondary>
+                <Menu secondary style={{display: 'flex', justifyContent: 'center'}}>
                   <Menu.Item name='today' active={activePage === 'today'} onClick={this.handleItemClick} />
                   <Menu.Item
                     name='projects'
