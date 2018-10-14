@@ -6,7 +6,8 @@ var ToDoSchema = new mongoose.Schema({
     title: String,
     duration: String,
     date: Date,
-    status: String
+    status: String,
+    project: String
 })
 
 ToDoSchema.plugin(mongoosePaginate)

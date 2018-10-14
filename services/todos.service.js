@@ -21,7 +21,8 @@ exports.createTodo = async function(todo){
         title: todo.title,
         duration: todo.duration,
         date: todo.date,
-        status: todo.status
+        status: todo.status,
+        project: todo.project
     })
 
     try{
@@ -49,6 +50,7 @@ exports.updateTodo = async function(todo){
     oldTodo.date = todo.date
     oldTodo.duration = todo.duration
     oldTodo.status = todo.status
+    oldTodo.project = todo.project
 
 
     try{

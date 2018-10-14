@@ -23,7 +23,8 @@ exports.createTodo = async function(req, res, next){
         title: req.body.title,
         duration: req.body.duration,
         date: req.body.date,
-        status: req.body.status
+        status: req.body.status,
+        project: req.body.project
     }
 
     try{
@@ -47,7 +48,8 @@ exports.updateTodo = async function(req, res, next){
         title: req.body.title ? req.body.title : null,
         duration: req.body.duration ? req.body.duration : null,
         date: req.body.date ? req.body.date : null,
-        status: req.body.status ? req.body.status : null
+        status: req.body.status ? req.body.status : null,
+        project: req.body.project ? req.body.project : null
     }
 
     try{
