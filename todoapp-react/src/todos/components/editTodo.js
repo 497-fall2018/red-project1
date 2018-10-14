@@ -24,7 +24,9 @@ class EditTodo extends Component {
             }
         } else {
             this.state = {
-                ...this.emptyTodo()
+                ...this.emptyTodo(),
+                invalidTitle: false,
+                invalidDuration: false
             }
         }
     }
@@ -54,9 +56,19 @@ class EditTodo extends Component {
     // Form submission methods
 
     createTodo = (event) => {
-        if (this.state.duration != "") {
+        if (this.state.duration != "" && this.state.title != "") {
           this.resetTodo()
           this.props.createTodo(this.state)
+          this.setState({invalidTitle: false});
+          this.setState({invalidDuration: false});
+        } else {
+          if (this.state.duration == "") {
+            this.setState({invalidDuration: true});
+          }
+
+          if (this.state.title == "") {
+            this.setState({invalidTitle: true});
+          }
         }
     }
     editTodo = (event) => {
@@ -89,17 +101,25 @@ class EditTodo extends Component {
                     {/* The onChange method pass the value from the Control to the State, It takes a method reference */}
                     {/* In this way a controlled two way binding is established */}
 
-                    <Input
+                    {!this.state.invalidTitle && <Input
                         placeholder='Title'
                         value={this.state.title}
-                        onChange={this.changeNewTitle}/>
+                        onChange={this.changeNewTitle}/>}
+                    {this.state.invalidTitle && <Input error
+                        placeholder='Title'
+                        value={this.state.title}
+                        onChange={this.changeNewTitle}/>}
                 </Table.Cell>
 
                 <Table.Cell>
-                    <Input
+                    {!this.state.invalidDuration && <Input
                         placeholder='Duration (HH:MM:SS)'
                         value={this.state.duration}
-                        onChange={this.changeNewDuration}/>
+                        onChange={this.changeNewDuration}/>}
+                    {this.state.invalidDuration && <Input error
+                        placeholder='Duration (HH:MM:SS)'
+                        value={this.state.duration}
+                        onChange={this.changeNewDuration}/>}
                 </Table.Cell>
 
                 <Table.Cell>
