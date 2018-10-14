@@ -6,7 +6,8 @@ import { connect } from 'react-redux'
 import { PropTypes } from 'prop-types'
 import TodoTable from '../components/todoTable';
 import TodoTableAll from '../components/todoTableAll';
-import { Header, Menu, Label } from 'semantic-ui-react'
+import { Input, Header, Menu, Label } from 'semantic-ui-react'
+
 
 var titleStyle = {
   marginTop: "50px",
@@ -17,11 +18,13 @@ export class TodoContainer extends Component {
     constructor(props) {
         super(props)
         this.state = {
-          activePage: 'today'
+          activePage: 'today',
+          activeProject: 'all'
         }
     }
 
     handleItemClick = (e, { name }) => this.setState({ activePage: name })
+    handleProjectClick = (e, { name }) => this.setState({ activeProject: name })
 
     // Todo Container methods dispatch the actions to the reducer functions. Ordered by CRUD Order
 
@@ -74,10 +77,19 @@ export class TodoContainer extends Component {
                   </Header>
                 </div>
                 <Menu secondary style={{display: 'flex', justifyContent: 'center'}}>
-                  <Menu.Item name='today' active={activePage === 'today'} onClick={this.handleItemClick} />
+                  <Menu.Item
+                    name='today'
+                    active={activePage === 'today'}
+                    onClick={this.handleItemClick}
+                  />
                   <Menu.Item
                     name='projects'
                     active={activePage === 'projects'}
+                    onClick={this.handleItemClick}
+                  />
+                  <Menu.Item
+                    name='add'
+                    active={activePage === 'add'}
                     onClick={this.handleItemClick}
                   />
                 </Menu>
@@ -109,13 +121,23 @@ export class TodoContainer extends Component {
                   </Header>
                 </div>
                 <Menu secondary style={{display: 'flex', justifyContent: 'center'}}>
-                  <Menu.Item name='today' active={activePage === 'today'} onClick={this.handleItemClick} />
+                  <Menu.Item
+                    name='today'
+                    active={activePage === 'today'}
+                    onClick={this.handleItemClick}
+                  />
                   <Menu.Item
                     name='projects'
                     active={activePage === 'projects'}
                     onClick={this.handleItemClick}
                   />
+                  <Menu.Item
+                    name='add'
+                    active={activePage === 'add'}
+                    onClick={this.handleItemClick}
+                  />
                 </Menu>
+                
               </div>
 
               <div className="todo-container">
@@ -129,6 +151,44 @@ export class TodoContainer extends Component {
                       stopTodo={this.stopTodo}
                       completeTodo = {this.completeTodo}
                       deleteTodo = {this.deleteTodo}
+                  />
+              </div>
+            </div>
+          );
+        }
+        else if (this.state.activePage == "add") {
+          return (
+            <div>
+              <div style={titleStyle}>
+                <div style={{display: 'flex', justifyContent: 'center'}}>
+                  <Header as='h2' textAlign='left'>
+                    <Header.Content>JustDoIt</Header.Content>
+                  </Header>
+                </div>
+                <Menu secondary style={{display: 'flex', justifyContent: 'center'}}>
+                  <Menu.Item
+                    name='today'
+                    active={activePage === 'today'}
+                    onClick={this.handleItemClick}
+                  />
+                  <Menu.Item
+                    name='projects'
+                    active={activePage === 'projects'}
+                    onClick={this.handleItemClick}
+                  />
+                  <Menu.Item
+                    name='add'
+                    active={activePage === 'add'}
+                    onClick={this.handleItemClick}
+                  />
+                </Menu>
+              </div>
+
+              <div style={{display: 'flex', justifyContent: 'center'}}>
+                <Input
+                  placeholder='New Project Name'
+                  //value={this.state.title}
+                  //onChange={this.changeNewTitle}
                   />
               </div>
             </div>
