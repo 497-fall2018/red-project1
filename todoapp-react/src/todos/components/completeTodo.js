@@ -19,7 +19,7 @@ const CompleteTodo = (props) => {
 
         // getClass Name assigns the class names of this element
 
-        <Table.Row className={getClassName(props)}>
+        <Table.Row positive>
             <Table.Cell>{props.todo.title}</Table.Cell>
             <Table.Cell>{props.todo.duration}</Table.Cell>
             <Table.Cell>{displayDate}</Table.Cell>

@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 import Popup from "reactjs-popup";
 import moment from 'moment'
 
-import {Button, Table, Modal} from 'semantic-ui-react'
+import {Button, Table} from 'semantic-ui-react'
 
 // The Todo Row component is a simple stateless component, It simply takes the props
 // and maps the specific events to the methods of parent component
@@ -11,15 +11,12 @@ import {Button, Table, Modal} from 'semantic-ui-react'
 const TodoRow = (props) => {
 
     // format: Sat, Oct 13
-    // currently, props.todo.date is a string
-    // convert it to a moment for formatting
     var displayDate = moment(props.todo.date).format("ddd, MMM DD")
 
     return (
 
         // getClass Name assigns the class names of this element
-
-        <Table.Row className={getClassName(props)}>
+        <Table.Row>
             <Table.Cell>{props.todo.title}</Table.Cell>
             <Table.Cell>{props.todo.duration}</Table.Cell>
             <Table.Cell>{displayDate}</Table.Cell>
