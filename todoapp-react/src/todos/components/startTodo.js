@@ -73,8 +73,8 @@ class StartTodo extends Component {
               <Table.Cell>{this.props.todo.title}</Table.Cell>
               <Table.Cell>{this.props.todo.duration}</Table.Cell>
               <Table.Cell>{moment(this.props.todo.date).format("ddd, MMM DD")}</Table.Cell>
-              <Table.Cell>
-                <Label size="huge">{this.state.currentTime}</Label>
+              <Table.Cell style={{display: 'flex'}}>
+                <Label size="massive">{this.state.currentTime}</Label>
                 {this.state.inProgress && <Button className="option-buttons" color='red' onClick={this.pause}>PAUSE</Button>}
                 {!this.state.inProgress && <Button className="option-buttons" color='red' onClick={this.continue}>CONTINUE</Button>}
                 <Button className="option-buttons" color='red' onClick={this.stopTodo}>STOP</Button>
@@ -84,12 +84,12 @@ class StartTodo extends Component {
         )
       } else {
         return (
-          <Table.Row positive>
+          <Table.Row>
               <Table.Cell>{this.props.todo.title}</Table.Cell>
               <Table.Cell>{this.props.todo.duration}</Table.Cell>
               <Table.Cell>{moment(this.props.todo.date).format("ddd, MMM DD")}</Table.Cell>
-              <Table.Cell>
-                <Label size="huge">{this.state.currentTime}</Label>
+              <Table.Cell style={{display: 'flex'}}>
+                <Label size="massive">{this.state.currentTime}</Label>
                 {this.state.inProgress && <Button className="option-buttons" color='red' onClick={this.pause}>PAUSE</Button>}
                 {!this.state.inProgress && <Button className="option-buttons" color='red' onClick={this.continue}>CONTINUE</Button>}
                 <Button className="option-buttons" color='red' onClick={this.stopTodo}>STOP</Button>

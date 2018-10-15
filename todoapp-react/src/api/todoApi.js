@@ -7,9 +7,7 @@ const API = 'http://localhost:3000/api'
 //Setting the todos URI
 
 const TODO_API = `${API}/todos`
-
 // The CRUD Operations of the Todo Resource.
-
 
 //Create
 const createTodo = todo => {
@@ -31,9 +29,7 @@ const removeTodo = todo => {
     return HttpClient.delete(`${TODO_API}/${todo._id}`)
 }
 
-
 //Encapsulating in a JSON object
-
 const TodoApi = {createTodo, getTodo, updateTodo, removeTodo}
 
 export {TodoApi}

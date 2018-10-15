@@ -1,11 +1,13 @@
 
 import React, { Component } from 'react';
 import * as TodoActions from '../actions/todoActions'
+import * as ProjectActions from '../../projects/actions/projectActions'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux'
 import { PropTypes } from 'prop-types'
 import TodoTable from '../components/todoTable';
 import TodoTableAll from '../components/todoTableAll';
+import CreateProject from '../../projects/components/createProject'
 import { Input, Header, Menu, Label } from 'semantic-ui-react'
 
 
@@ -31,6 +33,10 @@ export class TodoContainer extends Component {
     //Create
     createTodo = (todo) => {
         this.props.actions.CreateTodo(todo)
+    }
+
+    createProject = (project) => {
+        this.props.projectActions.CreateProject(project)
     }
 
 
@@ -139,6 +145,19 @@ export class TodoContainer extends Component {
                 </Menu>
                 
               </div>
+              
+              <div>
+                {/* This maps the projects recieved as a prop */}
+                <Menu>
+                  {this.props.projects.map(p => {
+                    return <Menu.Item
+                      name = {p.name}
+                      //active={activePage === 'add'}
+                      onClick = {this.handleProjectClick}
+                    />
+                  })}
+                </Menu>
+              </div>
 
               <div className="todo-container">
                   <TodoTableAll
@@ -184,13 +203,7 @@ export class TodoContainer extends Component {
                 </Menu>
               </div>
 
-              <div style={{display: 'flex', justifyContent: 'center'}}>
-                <Input
-                  placeholder='New Project Name'
-                  //value={this.state.title}
-                  //onChange={this.changeNewTitle}
-                  />
-              </div>
+              <CreateProject createProject={this.createProject}/>
             </div>
           );
         }
@@ -201,14 +214,18 @@ export class TodoContainer extends Component {
 
 TodoContainer.propTypes = {
     actions: PropTypes.object.isRequired,
-    todos: PropTypes.array.isRequired
+    projectActions: PropTypes.object.isRequired,
+    todos: PropTypes.array.isRequired,
+    projects: PropTypes.array.isRequired
+
 }
 
 // This maps the state to the property of the component
 
 function mapStateToProps(state, ownProps) {
     return {
-        todos: state.todos
+        todos: state.todos,
+        projects: state.projects
     }
 }
 
@@ -216,7 +233,8 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        actions: bindActionCreators(TodoActions, dispatch)
+        actions: bindActionCreators(TodoActions, dispatch),
+        projectActions: bindActionCreators(ProjectActions, dispatch)
     }
 }
 

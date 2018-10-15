@@ -19,6 +19,7 @@ import { Provider } from 'react-redux'
 import { configureStore } from './store/configureStore'
 
 import * as TodoActions from './todos/actions/todoActions'
+import * as ProjectActions from './projects/actions/projectActions'
 
 import AppBar from 'material-ui/AppBar';
 
@@ -31,6 +32,7 @@ const store = configureStore()
 // fetched from the server at the start of the app
 
 store.dispatch(TodoActions.GetTodos())
+store.dispatch(ProjectActions.GetProjects())
 
 const App = (props) => {
   return (

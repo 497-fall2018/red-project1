@@ -57,22 +57,45 @@ class EditTodo extends Component {
 
     createTodo = (event) => {
         if (this.state.duration != "" && this.state.title != "") {
-          this.resetTodo()
-          this.props.createTodo(this.state)
-          this.setState({invalidTitle: false});
-          this.setState({invalidDuration: false});
-        } else {
-          if (this.state.duration == "") {
-            this.setState({invalidDuration: true});
-          }
+            if(!this.state.duration.match(/[0-9][0-9]:[0-6][0-9]:[0-6][0-9]/)) {
+                this.setState({invalidDuration: true})
+            }
+            else {
+                this.resetTodo()
+                this.props.createTodo(this.state)
+                this.setState({invalidTitle: false});
+                this.setState({invalidDuration: false});
+            }
+        } else {          
+            if ( (this.state.duration == "")) {
+              this.setState({invalidDuration: true});
+            }
 
-          if (this.state.title == "") {
-            this.setState({invalidTitle: true});
-          }
+            if (this.state.title == "") {
+                this.setState({invalidTitle: true});
+            }
         }
     }
     editTodo = (event) => {
-        this.props.editTodo(this.state)
+        if(this.state.title != "" && this.state.duration != "") {
+            if (!this.state.duration.match(/[0-9][0-9]:[0-6][0-9]:[0-6][0-9]/)) {
+                this.setState({invalidDuration: true});
+            }
+            else
+            {
+                this.resetTodo();
+                this.props.editTodo(this.state);
+                this.setState({invalidTitle: false});
+                this.setState({invalidDuration: false});
+            }
+        } else {
+            if(this.state.title == "") {
+                this.setState({invalidTitle: true});
+            }
+            if(this.setState.duration == "") {
+                this.setState({invalidDuration: true});
+            }
+        }
     }
 
 

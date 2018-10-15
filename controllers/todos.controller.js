@@ -11,7 +11,7 @@ exports.getTodos = async function(req, res, next){
     console.log(page, limit)
 
     try{
-        var todos = await TodoService.getTodos({}, page, limit)
+        var todos = await TodoService.getTodos({}, page, limit) // go to mongo and wait until mongo gives the todos back
         return res.status(200).json({status: 200, data: todos, message: "Succesfully Todos Recieved"});
     }catch(e){
         return res.status(400).json({status: 400, message: e.message});
@@ -24,7 +24,7 @@ exports.createTodo = async function(req, res, next){
         duration: req.body.duration,
         date: req.body.date,
         status: req.body.status,
-        project: req.body.project
+        //project: req.body.project
     }
 
     try{

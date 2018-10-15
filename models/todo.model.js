@@ -7,7 +7,8 @@ var ToDoSchema = new mongoose.Schema({
     duration: String,
     date: Date,
     status: String,
-    project: String
+    //project: String,
+    project_id: String // refers to mongoDB's unique ID for a project
 })
 
 ToDoSchema.plugin(mongoosePaginate)

@@ -22,7 +22,7 @@ exports.createTodo = async function(todo){
         duration: todo.duration,
         date: todo.date,
         status: todo.status,
-        project: todo.project
+        project_id: todo.project_id
     })
 
     try{
